@@ -1,0 +1,7 @@
+obj
+Uploads
+bin
+*.user
+*.suo
+Web.Debug.config
+Web.Release.config
