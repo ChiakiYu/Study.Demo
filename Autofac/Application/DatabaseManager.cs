@@ -9,7 +9,7 @@ namespace Autofac.Application
 {
     public class DatabaseManager
     {
-        IDatabase _database;
+        private readonly IDatabase _database;
 
         public DatabaseManager(IDatabase database)
         {
