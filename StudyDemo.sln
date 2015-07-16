@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNet.Utilities", "DotNet.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Utilities", "DotNet.Utilities\DotNet.Utilities.csproj", "{0A9704F9-7864-45AF-BFA7-E09F2B30A29F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcDemo", "MvcDemo\MvcDemo.csproj", "{6317B276-1319-4320-9697-64A9FA849D0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,16 @@ Global
 		{0A9704F9-7864-45AF-BFA7-E09F2B30A29F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0A9704F9-7864-45AF-BFA7-E09F2B30A29F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0A9704F9-7864-45AF-BFA7-E09F2B30A29F}.Release|x86.ActiveCfg = Release|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "百度编辑器UEditor";
+    string content = ViewData["content"] == null ? "" : ViewData["content"].ToString();
+    <script src="~/Scripts/UEditor/ueditor.config.js"></script>
+    <script src="~/Scripts/UEditor/ueditor.all.min.js"></script>
+    <script src="~/Scripts/UEditor/ueditor.parse.min.js"></script>
+}
+
+<h2>UEditor</h2>
+
+<br />
+<div>@Html.Raw(content)</div>
+<br />
+<!-- 加载编辑器的容器 -->
+<form method="post" action="@Url.Action("UEditor", "Home")">
+
+    <textarea id="container"></textarea>
+    <br />
+    <br />
+    <input type="submit" value="提交" />
+</form>
+
+
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+
+    var p = {
+        initialFrameWidth: 800  //初始化编辑器宽度,默认1000
+        , initialFrameHeight: 400  //初始化编辑器高度,默认320
+    };
+    var ue = UE.getEditor('container', p);
+    ue.ready(function () {
+        ue.setContent('@Html.Raw(content)');
+    });
+</script>
