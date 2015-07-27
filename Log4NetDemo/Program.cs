@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Log4NetDemo
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             LogData();
         }
@@ -30,8 +25,6 @@ namespace Log4NetDemo
 
             Console.WriteLine("日志记录完毕。");
             Console.Read();
-
-
         }
     }
 }

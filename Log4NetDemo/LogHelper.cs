@@ -1,38 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using log4net;
+using log4net.Config;
 
 //[assembly: log4net.Config.XmlConfigurator(ConfigFile = "Log4net.config", ConfigFileExtension = "config", Watch = true)]
+
 namespace Log4NetDemo
 {
     /// <summary>
-    /// log4net日志专用
+    ///     log4net日志专用
     /// </summary>
     public class LogHelper
     {
-        private static readonly log4net.ILog Instance = log4net.LogManager.GetLogger("logAll");
+        private static readonly ILog Instance = LogManager.GetLogger("logAll");
+
         public static void SetConfig()
         {
-            log4net.Config.XmlConfigurator.Configure();
+            XmlConfigurator.Configure();
         }
 
         public static void SetConfig(string filePath)
         {
-            FileInfo configFile = new FileInfo(filePath);
-            log4net.Config.XmlConfigurator.Configure(configFile);
+            var configFile = new FileInfo(filePath);
+            XmlConfigurator.Configure(configFile);
         }
 
         public static void SetConfig(FileInfo configFile)
         {
-            log4net.Config.XmlConfigurator.Configure(configFile);
+            XmlConfigurator.Configure(configFile);
         }
 
         /// <summary>
-        /// 记录普通文件记录
+        ///     记录普通文件记录
         /// </summary>
         /// <param name="info"></param>
         public static void Info(string info)
@@ -44,10 +43,9 @@ namespace Log4NetDemo
         }
 
         /// <summary>
-        ///记录调试信息
+        ///     记录调试信息
         /// </summary>
         /// <param name="info"></param>
-        /// <param name="se"></param>
         public static void Debug(string info)
         {
             if (Instance.IsErrorEnabled)
@@ -57,10 +55,9 @@ namespace Log4NetDemo
         }
 
         /// <summary>
-        ///记录警告信息
+        ///     记录警告信息
         /// </summary>
         /// <param name="info"></param>
-        /// <param name="se"></param>
         public static void Warn(string info)
         {
             if (Instance.IsWarnEnabled)
@@ -70,7 +67,7 @@ namespace Log4NetDemo
         }
 
         /// <summary>
-        /// 记录错误日志
+        ///     记录错误日志
         /// </summary>
         /// <param name="info"></param>
         /// <param name="se"></param>
@@ -83,7 +80,7 @@ namespace Log4NetDemo
         }
 
         /// <summary>
-        /// 记录严重错误
+        ///     记录严重错误
         /// </summary>
         /// <param name="info"></param>
         /// <param name="se"></param>
@@ -94,7 +91,5 @@ namespace Log4NetDemo
                 Instance.Fatal(info, se);
             }
         }
-
-
     }
 }

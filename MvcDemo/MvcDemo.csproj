@@ -136,9 +136,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\artDialog\css\ui-dialog.css" />
+    <Content Include="Scripts\artDialog\dist\dialog-min.js" />
+    <Content Include="Scripts\artDialog\dist\dialog-plus-min.js" />
+    <Content Include="Scripts\artDialog\dist\dialog-plus.js" />
+    <Content Include="Scripts\artDialog\dist\dialog.js" />
+    <Content Include="Scripts\artDialog\src\dialog-config.js" />
+    <Content Include="Scripts\artDialog\src\dialog-plus.js" />
+    <Content Include="Scripts\artDialog\src\dialog.js" />
+    <Content Include="Scripts\artDialog\src\drag.js" />
+    <Content Include="Scripts\artDialog\src\popup.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jqueryforseajs-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -215,6 +226,9 @@
     <Content Include="Scripts\Plupload\plupload.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SeaJS\sea.js" />
+    <Content Include="Scripts\SeaJS\seajs-css.js" />
+    <Content Include="Scripts\SeaJS\seajs.config.js" />
     <Content Include="Scripts\UEditor\dialogs\anchor\anchor.html" />
     <Content Include="Scripts\UEditor\dialogs\attachment\attachment.css" />
     <Content Include="Scripts\UEditor\dialogs\attachment\attachment.html" />
@@ -506,6 +520,7 @@
     <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.woff" />
     <Content Include="Views\Home\Plupload.cshtml" />
     <Content Include="Views\Home\UEditor.cshtml" />
+    <Content Include="Views\Home\ArtDialoig.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

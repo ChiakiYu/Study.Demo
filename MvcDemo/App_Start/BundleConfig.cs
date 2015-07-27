@@ -20,6 +20,12 @@ namespace MvcDemo
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/plupload").Include(
+                "~/Scripts/Plupload/plupload.full.min.js",
+                      "~/Scripts/Plupload/i18n/zh_CN.js.js"
+                ));
+
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
