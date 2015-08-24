@@ -9,7 +9,8 @@ namespace EF.Model.Users
     {
         public User()
         {
-            Avatar = "avatar_default";
+            Password = "123123";
+            PasswordFormat = UserPasswordFormat.Clear;
             IsActive = true;
         }
 
@@ -36,29 +37,7 @@ namespace EF.Model.Users
         /// </summary>
         public UserPasswordFormat PasswordFormat { get; set; }
 
-        /// <summary>
-        ///     帐号邮箱
-        /// </summary>
-        [StringLength(64)]
-        public string AccountEmail { get; set; }
-
-        /// <summary>
-        ///     帐号邮箱是否通过验证
-        /// </summary>
-        public bool IsEmailVerified { get; set; }
-
-        /// <summary>
-        ///     手机号码
-        /// </summary>
-        [StringLength(11)]
-        public string AccountMobile { get; set; }
-
-        /// <summary>
-        ///     帐号手机是否通过验证
-        /// </summary>
-        public bool IsMobileVerified { get; set; }
-
-        /// <summary>
+       /// <summary>
         ///     个人姓名 或 企业名称
         /// </summary>
         [StringLength(128)]
@@ -70,12 +49,6 @@ namespace EF.Model.Users
         [Required]
         [StringLength(64)]
         public string NickName { get; set; }
-
-        /// <summary>
-        ///     头像(存储相对路径)
-        /// </summary>
-        [StringLength(256)]
-        public string Avatar { get; set; }
 
         /// <summary>
         ///     是否激活
