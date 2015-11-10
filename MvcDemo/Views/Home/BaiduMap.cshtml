@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>百度地图Demo</title>
+    <style type="text/css">
+        #container {
+            margin: 20px 15%;
+            width: 70%;
+            height: 780px;
+        }
+
+        .searchDiv {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .pointDiv {
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MY2B989NMlReQYQE94rwBkd1"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+</head>
+
+<body>
+    <div class="searchDiv">
+        <input type="text" name="name" id="searchInput" />
+        <input type="button" value="查询" id="search" />
+    </div>
+    <div class="pointDiv">
+        X：<input id="point-x" />
+    </div>
+    <div class="pointDiv">
+        Y：<input id="point-y" />
+    </div>
+    <div id="container"></div>
+    <script type="text/javascript">
+        $(function () {
+            setmap("");
+            $("#search").click(function () {
+                var val = $("#searchInput").val();
+                setmap(val);
+            });
+        });
+        function setmap(val) {
+            var map = new BMap.Map("container", { minZoom: 10, maxZoom: 19 }); // 创建地图实例
+
+            map.addControl(new BMap.MapTypeControl({ mapTypes: [BMAP_NORMAL_MAP, BMAP_SATELLITE_MAP, BMAP_HYBRID_MAP] })); //添加地图类型控件
+            map.addControl(new BMap.NavigationControl()); //添加地图平移缩放控件
+            map.addControl(new BMap.ScaleControl()); //添加比例尺控件
+            map.centerAndZoom(new BMap.Point(119.226569, 36.781382), 12); // 初始化地图，设置中心点坐标和地图级别，如果有多个，则以寒亭区政府为中心
+
+            map.addEventListener("click", function (e) {
+                $("#point-x").val(e.point.lng);
+                $("#point-y").val(e.point.lat);
+            });
+            $.get('@Url.Action("GetData", "Home")', { name: val }, function (data) {
+                data = $.parseJSON(data);
+
+                var point = new Array(); //存放标注点经纬信息的数组
+                var marker = new Array(); //存放标注点对象的数组
+                var content = new Array(); //存放提示信息窗口对象的数组
+                var searchInfoWindow = new Array(); //存放检索信息窗口对象的数组
+                for (var i = 0; i < data.length; i++) {
+                    point[i] = new BMap.Point(data[i].PointX, data[i].PointY); //循环生成新的地图点
+                    marker[i] = new BMap.Marker(point[i]); //按照地图点坐标生成标记
+                    map.addOverlay(marker[i]); //添加点
+                    if (data.length == 1)
+                        map.centerAndZoom(point[0], 18); // 初始化地图，设置中心点坐标和地图级别
+
+                    content[i] = data[i].Description; // 信息窗口内容
+                    searchInfoWindow[i] = new BMapLib.SearchInfoWindow(map, content[i], { //创建百度样式检索信息窗口对象
+                        title: data[i].Name, //标题
+                        width: 290, //宽度
+                        //height: 55,              //高度
+                        panel: "panel", //检索结果面板
+                        enableAutoPan: true, //自动平移
+                        enableSendToPhone:false,//是否启动发送到手机功能,默认开启
+                        searchTypes: [
+                            //BMAPLIB_TAB_SEARCH, //周边检索
+                            BMAPLIB_TAB_TO_HERE, //到这里去
+                            BMAPLIB_TAB_FROM_HERE //从这里出发
+                        ]
+                    });
+                    //添加点击事件
+                    marker[i].addEventListener("click",
+                        (function (k) {// js 闭包
+                            return function () {
+                                //将被点击marker置为中心
+                                //map.centerAndZoom(point[k], 18);
+                                //在marker上打开检索信息窗口
+                                searchInfoWindow[k].open(marker[k]);
+
+                            }
+                        })(i)
+                    );
+                }
+            });
+        }
+    </script>
+</body>
+</html>

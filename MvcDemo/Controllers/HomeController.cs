@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
+using MvcDemo.Models;
+using Newtonsoft.Json;
 
 namespace MvcDemo.Controllers
 {
@@ -9,6 +13,20 @@ namespace MvcDemo.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult BaiduMap()
+        {
+            return PartialView();
+        }
+
+        public ContentResult GetData(string name = null)
+        {
+            var area = new Area();
+            IEnumerable<Area> data = null;
+            data = string.IsNullOrEmpty(name) ? area.GetData() : area.GetData().Where(n => n.Name == name);
+            var result = JsonConvert.SerializeObject(data);
+            return Content(result);
         }
 
         public ActionResult About()
@@ -61,7 +79,7 @@ namespace MvcDemo.Controllers
             var request = System.Web.HttpContext.Current.Request;
             var src = string.Empty;
 
-            if (request.Files.Count <= 0) return Json(new {src, src1 = "111"});
+            if (request.Files.Count <= 0) return Json(new { src, src1 = "111" });
             for (var i = 0; i < request.Files.Count; i++)
             {
                 var file = request.Files[i];
@@ -71,7 +89,7 @@ namespace MvcDemo.Controllers
                 file.SaveAs(localPath + fileName);
                 src = savePath + fileName;
             }
-            return Json(new {src, src1 = "111"});
+            return Json(new { src, src1 = "111" });
         }
 
         public ActionResult ArtDialoig()
