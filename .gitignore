@@ -5,3 +5,4 @@ bin
 *.suo
 Web.Debug.config
 Web.Release.config
+/packages
