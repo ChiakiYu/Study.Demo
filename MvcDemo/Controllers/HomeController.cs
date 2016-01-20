@@ -96,5 +96,10 @@ namespace MvcDemo.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult DataTables()
+        {
+            return PartialView();
+        } 
     }
 }
