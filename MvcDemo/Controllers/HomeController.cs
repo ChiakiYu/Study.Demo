@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web.Mvc;
 using MvcDemo.Models;
 using Newtonsoft.Json;
@@ -100,6 +102,51 @@ namespace MvcDemo.Controllers
         public ActionResult DataTables()
         {
             return PartialView();
-        } 
+        }
+
+        public JsonResult GetDatas(AreaQuery query)
+        {
+            var data = new Area().GetData();
+            if (!string.IsNullOrEmpty(query.Name))
+                data = data.Where(n => n.Name.Contains(query.Name));
+
+            data = data.OrderBy(query.OrderBy, query.OrderDir == DTOrderDir.DESC);
+            var count = data.Count();
+            var result = data.Skip(query.Start).Take(query.Length);
+            var result1 = new { draw = query.Draw, recordsTotal = count, recordsFiltered = count, data = result };
+            return Json(result1);
+        }
+    }
+
+
+    public static class QueryableExtensions
+    {
+        public static IQueryable<T> OrderBy<T>(this IQueryable<T> queryable, string propertyName)
+        {
+            return QueryableHelper<T>.OrderBy(queryable, propertyName, false);
+        }
+        public static IQueryable<T> OrderBy<T>(this IQueryable<T> queryable, string propertyName, bool desc)
+        {
+            return QueryableHelper<T>.OrderBy(queryable, propertyName, desc);
+        }
+        static class QueryableHelper<T>
+        {
+            private static ConcurrentDictionary<string, LambdaExpression> cache = new ConcurrentDictionary<string, LambdaExpression>();
+            public static IQueryable<T> OrderBy(IQueryable<T> queryable, string propertyName, bool desc)
+            {
+                dynamic keySelector = GetLambdaExpression(propertyName);
+                return desc ? Queryable.OrderByDescending(queryable, keySelector) : Queryable.OrderBy(queryable, keySelector);
+            }
+            private static LambdaExpression GetLambdaExpression(string propertyName)
+            {
+                if (cache.ContainsKey(propertyName)) 
+                    return cache[propertyName];
+                var param = Expression.Parameter(typeof(T));
+                var body = Expression.Property(param, propertyName);
+                var keySelector = Expression.Lambda(body, param);
+                cache[propertyName] = keySelector;
+                return keySelector;
+            }
+        }
     }
 }
