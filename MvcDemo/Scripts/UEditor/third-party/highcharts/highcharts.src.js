@@ -1,4 +1,4 @@
-// ==ClosureCompiler==
+﻿// ==ClosureCompiler==
 // @compilation_level SIMPLE_OPTIMIZATIONS
 
 /**
@@ -1009,7 +1009,7 @@ pathAnim = {
 			end = [].concat(toD), // copy
 			startBaseLine,
 			endBaseLine,
-			sixify = function (arr) { // in splines make move points have six parameters like bezier curves
+			sixify = function (arr) { // in splines make move points have six query like bezier curves
 				i = arr.length;
 				while (i--) {
 					if (arr[i] === M) {
@@ -1238,7 +1238,7 @@ pathAnim = {
 					/*jslint unused:true*/
 				}
 
-				// When called without parameters or with the return argument, get a predefined chart
+				// When called without query or with the return argument, get a predefined chart
 				if (options === UNDEFINED) {
 					ret = charts[attr(this[0], 'data-highcharts-chart')];
 				}	
@@ -2306,7 +2306,7 @@ SVGElement.prototype = {
 	*/
 
 	/**
-	 * If one of the symbol size affecting parameters are changed,
+	 * If one of the symbol size affecting query are changed,
 	 * check all the others only once for each call to an element's
 	 * .attr() method
 	 * @param {Object} hash
@@ -4740,7 +4740,7 @@ Highcharts.VMLElement = VMLElement = {
 					// prepare paths
 					// symbols
 					if (symbolName && /^(x|y|r|start|end|width|height|innerR|anchorX|anchorY)/.test(key)) {
-						// if one of the symbol size affecting parameters are changed,
+						// if one of the symbol size affecting query are changed,
 						// check all the others only once for each call to an element's
 						// .attr() method
 						if (!hasSetSymbolSize) {
@@ -4970,7 +4970,7 @@ Highcharts.VMLElement = VMLElement = {
 	},
 
 	/**
-	 * Add an event listener. VML override for normalizing event parameters.
+	 * Add an event listener. VML override for normalizing event query.
 	 * @param {String} eventType
 	 * @param {Function} handler
 	 */

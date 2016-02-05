@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quertz.net", "Quertz.net", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quertz.net.demo", "Quertz.net.demo\Quertz.net.demo.csproj", "{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChiakiYu", "ChiakiYu\ChiakiYu.csproj", "{331F88C4-6105-4EC5-8409-4910AC144DC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,16 @@ Global
 		{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}.Release|x86.ActiveCfg = Release|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

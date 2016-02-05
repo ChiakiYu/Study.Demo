@@ -250,8 +250,8 @@ var sh = {
     /**
      * Finds all elements on the page which should be processes by SyntaxHighlighter.
      *
-     * @param {Object} globalParams     Optional parameters which override element's
-     *                                  parameters. Only used if element is specified.
+     * @param {Object} globalParams     Optional query which override element's
+     *                                  query. Only used if element is specified.
      *
      * @param {Object} element  Optional element to highlight. If none is
      *                          provided, all elements in the current document
@@ -294,8 +294,8 @@ var sh = {
      * Shorthand to highlight all elements on the page that are marked as
      * SyntaxHighlighter source code.
      *
-     * @param {Object} globalParams     Optional parameters which override element's
-     *                                  parameters. Only used if element is specified.
+     * @param {Object} globalParams     Optional query which override element's
+     *                                  query. Only used if element is specified.
      *
      * @param {Object} element  Optional element to highlight. If none is
      *                          provided, all elements in the current document
@@ -1688,7 +1688,7 @@ sh.Highlighter.prototype = {
      * Constructor isn't used for initialization so that nothing executes during necessary
      * `new SyntaxHighlighter.Highlighter()` call when setting up brush inheritence.
      *
-     * @param {Hash} params Highlighter parameters.
+     * @param {Hash} params Highlighter query.
      */
     init: function(params)
     {

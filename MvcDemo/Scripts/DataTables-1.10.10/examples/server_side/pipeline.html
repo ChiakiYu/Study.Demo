@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -30,7 +30,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 	var conf = $.extend( {
 		pages: 5,     // number of pages to cache
 		url: '',      // script url
-		data: null,   // function or object with parameters to send to the server
+		data: null,   // function or object with query to send to the server
 		              // matching how `ajax.data` works in DataTables
 		method: 'GET' // Ajax HTTP method
 	}, opts );
@@ -208,7 +208,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 	var conf = $.extend( {
 		pages: 5,     // number of pages to cache
 		url: '',      // script url
-		data: null,   // function or object with parameters to send to the server
+		data: null,   // function or object with query to send to the server
 		              // matching how `ajax.data` works in DataTables
 		method: 'GET' // Ajax HTTP method
 	}, opts );

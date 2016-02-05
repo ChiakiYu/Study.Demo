@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MvcDemo.Models.DataTables;
 
 namespace MvcDemo.Models
 {
-    public class AreaQuery : DatatablesQuery
+    public class AreaQuery : DataTablesParameters
     {
         public string Name { get; set; }
 
-        public string X { get; set; }
+        public string Description { get; set; }
 
-        public string Y { get; set; }
+        public double X { get; set; }
+
+        public double Y { get; set; }
     }
 }

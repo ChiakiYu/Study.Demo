@@ -1,4 +1,4 @@
-/*! ColReorder 1.3.0
+﻿/*! ColReorder 1.3.0
  * ©2010-2015 SpryMedia Ltd - datatables.net/license
  */
 
@@ -344,7 +344,7 @@ $.fn.dataTableExt.oApi.fnColReorder = function ( oSettings, iFrom, iTo, drop )
 		mapping: aiInvertMapping,
 		drop: drop,
 
-		// Old style parameters for compatibility
+		// Old style query for compatibility
 		iFrom: iFrom,
 		iTo: iTo,
 		aiInvertMapping: aiInvertMapping
@@ -1161,7 +1161,7 @@ $.extend( ColReorder.prototype, {
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * Static parameters
+ * Static query
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 

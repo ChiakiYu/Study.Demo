@@ -129,7 +129,8 @@
     </Compile>
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\AreaQuery.cs" />
-    <Compile Include="Models\DatatablesQuery.cs" />
+    <Compile Include="Models\DataTables\DataTablesParameters.cs" />
+    <Compile Include="Models\DataTables\DataTablesResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -668,10 +669,13 @@
     <Content Include="Scripts\DataTables-1.10.10\media\js\jquery.dataTables.js" />
     <Content Include="Scripts\DataTables-1.10.10\media\js\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTables-1.10.10\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables.js" />
     <Content Include="Scripts\jqueryforseajs-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\Plupload\i18n\ar.js" />
     <Content Include="Scripts\Plupload\i18n\az.js" />
     <Content Include="Scripts\Plupload\i18n\bg.js" />

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using MvcDemo.Models;
+using MvcDemo.Models.DataTables;
 using Newtonsoft.Json;
 
 namespace MvcDemo.Controllers
@@ -109,15 +110,69 @@ namespace MvcDemo.Controllers
             var data = new Area().GetData();
             if (!string.IsNullOrEmpty(query.Name))
                 data = data.Where(n => n.Name.Contains(query.Name));
+            if (!string.IsNullOrEmpty(query.Description))
+                data = data.Where(n => n.Description.Contains(query.Description));
+            if (query.X > 0)
+                data = data.Where(n => Equals(n.PointX, query.X));
+            if (query.Y > 0)
+                data = data.Where(n => Equals(n.PointY, query.Y));
 
-            data = data.OrderBy(query.OrderBy, query.OrderDir == DTOrderDir.DESC);
+            data = data.OrderBy(query.OrderBy, query.OrderDir == DataTablesOrderDir.Desc);
             var count = data.Count();
-            var result = data.Skip(query.Start).Take(query.Length);
-            var result1 = new { draw = query.Draw, recordsTotal = count, recordsFiltered = count, data = result };
-            return Json(result1);
-        }
-    }
+            var result = data.Skip(query.Start).Take(query.Length).ToList();
 
+            return DataTablesJson(query.Draw, count, count, result);
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="draw">请求次数计数器</param>
+        /// <param name="recordsTotal">总共记录数</param>
+        /// <param name="recordsFiltered">过滤后的记录数</param>
+        /// <param name="data">数据</param>
+        /// <param name="error">服务器错误信息</param>
+        public JsonResult DataTablesJson<TEntity>(int draw, int recordsTotal, int recordsFiltered, IReadOnlyList<TEntity> data, string error = null)
+        {
+            var result = new DataTablesResult<TEntity>(draw, recordsFiltered, recordsFiltered, data);
+            var jsonResult = new JsonResult
+            {
+                Data = result
+            };
+            return jsonResult;
+        }
+
+        //public JsonResult DataTablesJson(object data)
+        //{
+        //    var jsonResult = new JsonResult
+        //    {
+        //        Data = data
+        //    };
+        //    return jsonResult;
+        //}
+
+        //public JsonResult DataTablesJson(object data, JsonRequestBehavior behavior)
+        //{
+        //    var jsonResult = new JsonResult
+        //    {
+        //        Data = data,
+        //        JsonRequestBehavior = behavior
+        //    };
+        //    return jsonResult;
+        //}
+
+        //public JsonResult DataTablesJson(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
+        //{
+        //    var jsonResult = new JsonResult
+        //    {
+        //        Data = data,
+        //        ContentType = contentType,
+        //        ContentEncoding = contentEncoding,
+        //        JsonRequestBehavior = behavior
+        //    };
+        //    return jsonResult;
+        //}
+    }
 
     public static class QueryableExtensions
     {
@@ -139,7 +194,7 @@ namespace MvcDemo.Controllers
             }
             private static LambdaExpression GetLambdaExpression(string propertyName)
             {
-                if (cache.ContainsKey(propertyName)) 
+                if (cache.ContainsKey(propertyName))
                     return cache[propertyName];
                 var param = Expression.Parameter(typeof(T));
                 var body = Expression.Property(param, propertyName);

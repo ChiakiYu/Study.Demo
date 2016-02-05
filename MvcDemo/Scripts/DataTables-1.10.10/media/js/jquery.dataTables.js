@@ -332,7 +332,7 @@
 	
 	
 	/**
-	 * Create a mapping object that allows camel case parameters to be looked up
+	 * Create a mapping object that allows camel case query to be looked up
 	 * for their Hungarian counterparts. The mapping is stored in a private
 	 * parameter called `_hungarianMap` which can be accessed on the source object.
 	 *  @param {object} o
@@ -366,9 +366,9 @@
 	
 	
 	/**
-	 * Convert from camel case parameters to Hungarian, based on a Hungarian map
+	 * Convert from camel case query to Hungarian, based on a Hungarian map
 	 * created by _fnHungarianMap.
-	 *  @param {object} src The model object which holds all parameters that can be
+	 *  @param {object} src The model object which holds all query that can be
 	 *    mapped.
 	 *  @param {object} user The object to convert from camel case to Hungarian.
 	 *  @param {boolean} force When set to `true`, properties which already have a
@@ -389,7 +389,7 @@
 	
 			if ( hungarianKey !== undefined && (force || user[hungarianKey] === undefined) )
 			{
-				// For objects, we need to buzz down into the object to copy parameters
+				// For objects, we need to buzz down into the object to copy query
 				if ( hungarianKey.charAt(0) === 'o' )
 				{
 					// Copy the camelCase options over to the hungarian
@@ -463,7 +463,7 @@
 	
 	/**
 	 * Provide backwards compatibility for the main DT options. Note that the new
-	 * options are mapped onto the old parameters, so this is an external interface
+	 * options are mapped onto the old query, so this is an external interface
 	 * change only.
 	 *  @param {object} init Object to map
 	 */
@@ -504,7 +504,7 @@
 	
 	/**
 	 * Provide backwards compatibility for column options. Note that the new options
-	 * are mapped onto the old parameters, so this is an external interface change
+	 * are mapped onto the old query, so this is an external interface change
 	 * only.
 	 *  @param {object} init Object to map
 	 */
@@ -658,7 +658,7 @@
 	
 		// Add search object for column specific search. Note that the `searchCols[ iCol ]`
 		// passed into extend can be undefined. This allows the user to give a default
-		// with only some of the parameters defined, and also not give a default
+		// with only some of the query defined, and also not give a default
 		var searchCols = oSettings.aoPreSearchCols;
 		searchCols[ iCol ] = $.extend( {}, DataTable.models.oSearch, searchCols[ iCol ] );
 	
@@ -699,7 +699,7 @@
 			// Backwards compatibility
 			_fnCompatCols( oOptions );
 	
-			// Map camel case parameters to their Hungarian counterparts
+			// Map camel case query to their Hungarian counterparts
 			_fnCamelToHungarian( DataTable.defaults.column, oOptions );
 	
 			/* Backwards compatibility for mDataProp */
@@ -966,7 +966,7 @@
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {array} aoColDefs The aoColumnDefs array that is to be applied
 	 *  @param {array} aoCols The aoColumns array that defines columns individually
-	 *  @param {function} fn Callback function - takes two parameters, the calculated
+	 *  @param {function} fn Callback function - takes two query, the calculated
 	 *    column index and the definition for that column.
 	 *  @memberof DataTable#oApi
 	 */
@@ -1618,7 +1618,7 @@
 	 * @param {array|object} [d] Data source object. If `colIdx` is given then this
 	 *   parameter should also be given and will be used to write the data into.
 	 *   Only the column in question will be written
-	 * @returns {object} Object with two parameters: `data` the data read, in
+	 * @returns {object} Object with two query: `data` the data read, in
 	 *   document order, and `cells` and array of nodes (they can be useful to the
 	 *   caller, so rather than needing a second traversal to get them, just return
 	 *   them from here).
@@ -1754,7 +1754,7 @@
 			 */
 			nTr._DT_RowIndex = iRow;
 	
-			/* Special parameters can be given by the data source to be used on the row */
+			/* Special query can be given by the data source to be used on the row */
 			_fnRowAttributes( oSettings, row );
 	
 			/* Process each column */
@@ -1810,7 +1810,7 @@
 	
 	
 	/**
-	 * Add attributes to a row based on the special `DT_*` parameters in a data
+	 * Add attributes to a row based on the special `DT_*` query in a data
 	 * source object.
 	 *  @param {object} settings DataTables settings object
 	 *  @param {object} DataTables row object for the row to be modified
@@ -2480,7 +2480,7 @@
 	
 	/**
 	 * Create an Ajax call based on the table's settings, taking into account that
-	 * parameters can have multiple forms, and backwards compatibility.
+	 * query can have multiple forms, and backwards compatibility.
 	 *
 	 * @param {object} oSettings dataTables settings object
 	 * @param {array} data Data to send to the server, required by
@@ -2641,7 +2641,7 @@
 	
 	
 	/**
-	 * Build up the parameters in an object needed for a server-side processing
+	 * Build up the query in an object needed for a server-side processing
 	 * request. Note that this is basically done twice, is different ways - a modern
 	 * method which is used by default in DataTables 1.10 which uses objects and
 	 * arrays, or the 1.9- method with is name / value pairs. 1.9 method is used if
@@ -5175,7 +5175,7 @@
 	 *  @param {object} extender Object from which the properties will be applied to
 	 *      out
 	 *  @param {boolean} breakRefs If true, then arrays will be sliced to take an
-	 *      independent copy with the exception of the `data` or `aaData` parameters
+	 *      independent copy with the exception of the `data` or `aaData` query
 	 *      if they are present. This is so you can pass in a collection to
 	 *      DataTables and have that used as your data source without breaking the
 	 *      references
@@ -5368,7 +5368,7 @@
 		 * Perform a jQuery selector action on the table's TR elements (from the tbody) and
 		 * return the resulting jQuery object.
 		 *  @param {string|node|jQuery} sSelector jQuery selector or node collection to act on
-		 *  @param {object} [oOpts] Optional parameters for modifying the rows to be included
+		 *  @param {object} [oOpts] Optional query for modifying the rows to be included
 		 *  @param {string} [oOpts.filter=none] Select TR elements that meet the current filter
 		 *    criterion ("applied") or all TR elements (i.e. no filter).
 		 *  @param {string} [oOpts.order=current] Order of the TR elements in the processed array.
@@ -5414,9 +5414,9 @@
 		 * create the row (or a generated array if from a DOM source).
 		 *
 		 * This method is often useful in-combination with $ where both functions are given the
-		 * same parameters and the array indexes will match identically.
+		 * same query and the array indexes will match identically.
 		 *  @param {string|node|jQuery} sSelector jQuery selector or node collection to act on
-		 *  @param {object} [oOpts] Optional parameters for modifying the rows to be included
+		 *  @param {object} [oOpts] Optional query for modifying the rows to be included
 		 *  @param {string} [oOpts.filter=none] Select elements that meet the current filter
 		 *    criterion ("applied") or all elements (i.e. no filter).
 		 *  @param {string} [oOpts.order=current] Order of the data in the processed array.
@@ -5742,7 +5742,7 @@
 		
 		/**
 		 * Get the data for the whole table, an individual row or an individual cell based on the
-		 * provided parameters.
+		 * provided query.
 		 *  @param {int|node} [src] A TR row node, TD/TH cell node or an integer. If given as
 		 *    a TR node then the data source for the whole row will be returned. If given as a
 		 *    TD/TH cell node then iCol will be automatically calculated and the data for the
@@ -6220,7 +6220,7 @@
 				this.id = sId;
 			}
 			
-			/* Create the settings object for this table and set some of the default parameters */
+			/* Create the settings object for this table and set some of the default query */
 			var oSettings = $.extend( true, {}, DataTable.models.oSettings, {
 				"sDestroyWidth": $this[0].style.width,
 				"sInstance":     sId,
@@ -8224,7 +8224,7 @@
 	
 	_api_register( [
 		_child_obj+'.show()',
-		_child_mth+'.show()' // only when `child()` was called with parameters (without
+		_child_mth+'.show()' // only when `child()` was called with query (without
 	], function ( show ) {   // it returns an object and this method is not executed)
 		__details_display( this, true );
 		return this;
@@ -8233,7 +8233,7 @@
 	
 	_api_register( [
 		_child_obj+'.hide()',
-		_child_mth+'.hide()' // only when `child()` was called with parameters (without
+		_child_mth+'.hide()' // only when `child()` was called with query (without
 	], function () {         // it returns an object and this method is not executed)
 		__details_display( this, false );
 		return this;
@@ -8242,7 +8242,7 @@
 	
 	_api_register( [
 		_child_obj+'.remove()',
-		_child_mth+'.remove()' // only when `child()` was called with parameters (without
+		_child_mth+'.remove()' // only when `child()` was called with query (without
 	], function () {           // it returns an object and this method is not executed)
 		__details_remove( this );
 		return this;
@@ -8278,7 +8278,7 @@
 	var __re_column_selector = /^(.+):(name|visIdx|visible)$/;
 	
 	
-	// r1 and r2 are redundant - but it means that the parameters match for the
+	// r1 and r2 are redundant - but it means that the query match for the
 	// iterator callback in columns().data()
 	var __columnData = function ( settings, column, r1, r2, rows ) {
 		var a = [];
@@ -9070,12 +9070,12 @@
 	
 	
 	/**
-	 * Convert from camel case parameters to Hungarian notation. This is made public
+	 * Convert from camel case query to Hungarian notation. This is made public
 	 * for the extensions to provide the same ability as DataTables core to accept
 	 * either the 1.9 style Hungarian notation, or the 1.10+ style camelCase
-	 * parameters.
+	 * query.
 	 *
-	 *  @param {object} src The model object which holds all parameters that can be
+	 *  @param {object} src The model object which holds all query that can be
 	 *    mapped.
 	 *  @param {object} user The object to convert from camel case to Hungarian.
 	 *  @param {boolean} force When set to `true`, properties which already have a
@@ -9872,18 +9872,18 @@
 		 * `object`
 		 * --------
 		 *
-		 * As an object, the parameters in the object are passed to
+		 * As an object, the query in the object are passed to
 		 * [jQuery.ajax](http://api.jquery.com/jQuery.ajax/) allowing fine control
-		 * of the Ajax request. DataTables has a number of default parameters which
+		 * of the Ajax request. DataTables has a number of default query which
 		 * you can override using this option. Please refer to the jQuery
 		 * documentation for a full description of the options available, although
-		 * the following parameters provide additional options in DataTables or
+		 * the following query provide additional options in DataTables or
 		 * require special consideration:
 		 *
 		 * * `data` - As with jQuery, `data` can be provided as an object, but it
 		 *   can also be used as a function to manipulate the data DataTables sends
 		 *   to the server. The function takes a single parameter, an object of
-		 *   parameters with the values that DataTables has readied for sending. An
+		 *   query with the values that DataTables has readied for sending. An
 		 *   object may be returned which will be merged into the DataTables
 		 *   defaults, or you can add the items to the object that was passed in and
 		 *   not return anything from the function. This supersedes `fnServerParams`
@@ -9912,8 +9912,8 @@
 		 * than Ajax could be used to obtain the required data, such as Web storage
 		 * or an AIR database.
 		 *
-		 * The function is given four parameters and no return is required. The
-		 * parameters are:
+		 * The function is given four query and no return is required. The
+		 * query are:
 		 *
 		 * 1. _object_ - Data to send to the server
 		 * 2. _function_ - Callback function that must be executed when the required
@@ -10074,7 +10074,7 @@
 		/**
 		 * Basically the same as `search`, this parameter defines the individual column
 		 * filtering state at initialisation time. The array must be of the same size
-		 * as the number of columns, and each element be an object with the parameters
+		 * as the number of columns, and each element be an object with the query
 		 * `search` and `escapeRegex` (the latter is optional). 'null' is also
 		 * accepted and the default will be used.
 		 *  @type array
@@ -10793,7 +10793,7 @@
 		 *    pairs) that has been constructed by DataTables and will be sent to the
 		 *    server. In the case of Ajax sourced data with server-side processing
 		 *    this will be an empty array, for server-side processing there will be a
-		 *    significant number of parameters!
+		 *    significant number of query!
 		 *  @returns {undefined} Ensure that you modify the data array passed in,
 		 *    as this is passed by reference.
 		 *
@@ -10856,7 +10856,7 @@
 		 * Callback which allows modification of the saved state prior to loading that state.
 		 * This callback is called when the table is loading state from the stored data, but
 		 * prior to the settings object being modified by the saved state. Note that for
-		 * plug-in authors, you should use the `stateLoadParams` event to load parameters for
+		 * plug-in authors, you should use the `stateLoadParams` event to load query for
 		 * a plug-in.
 		 *  @type function
 		 *  @param {object} settings DataTables settings object
@@ -10958,7 +10958,7 @@
 		 * has changed state a new state save is required. This method allows modification of
 		 * the state saving object prior to actually doing the save, including addition or
 		 * other state properties or modification. Note that for plug-in authors, you should
-		 * use the `stateSaveParams` event to save parameters for a plug-in.
+		 * use the `stateSaveParams` event to save query for a plug-in.
 		 *  @type function
 		 *  @param {object} settings DataTables settings object
 		 *  @param {object} data The state object to be saved
@@ -11593,7 +11593,7 @@
 			 * server-side, which DataTables will look up if this parameter is passed.
 			 * It must store the URL of the language file, which is in a JSON format,
 			 * and the object has the same properties as the oLanguage object in the
-			 * initialiser object (i.e. the above parameters). Please refer to one of
+			 * initialiser object (i.e. the above query). Please refer to one of
 			 * the example language files to see how this works in action.
 			 *  @type string
 			 *  @default <i>Empty string - i.e. disabled</i>
@@ -11639,7 +11639,7 @@
 		/**
 		 * This parameter allows you to have define the global filtering state at
 		 * initialisation time. As an object the `search` parameter must be
-		 * defined, but all other parameters are optional. When `regex` is true,
+		 * defined, but all other query are optional. When `regex` is true,
 		 * the search string will be treated as a regular expression, when false
 		 * (default) it will be treated as a straight string. When `smart`
 		 * DataTables will use it's smart filtering methods (to word match at
@@ -12195,7 +12195,7 @@
 		 *      row is used for the renderer.
 		 * * `function` - the function given will be executed whenever DataTables
 		 *   needs to set or get the data for a cell in the column. The function
-		 *   takes three parameters:
+		 *   takes three query:
 		 *    * Parameters:
 		 *      * `{array|object}` The data source for the row
 		 *      * `{string}` The type call data requested - this will be 'set' when
@@ -12367,7 +12367,7 @@
 		 *   the data type requested by DataTables.
 		 * * `function` - the function given will be executed whenever DataTables
 		 *   needs to set or get the data for a cell in the column. The function
-		 *   takes three parameters:
+		 *   takes three query:
 		 *    * Parameters:
 		 *      * {array|object} The data source for the row (based on `data`)
 		 *      * {string} The type call data requested - this will be 'filter',
@@ -12998,7 +12998,7 @@
 		},
 	
 		/**
-		 * Browser support parameters
+		 * Browser support query
 		 *  @namespace
 		 */
 		"oBrowser": {
@@ -13040,7 +13040,7 @@
 	
 		/**
 		 * Array referencing the nodes which are used for the features. The
-		 * parameters of this object match what is allowed by sDom - i.e.
+		 * query of this object match what is allowed by sDom - i.e.
 		 *   <ul>
 		 *     <li>'l' - Length changing</li>
 		 *     <li>'f' - Filtering input</li>
@@ -13305,7 +13305,7 @@
 		"bInitialised": false,
 	
 		/**
-		 * Information about open rows. Each object in the array has the parameters
+		 * Information about open rows. Each object in the array has the query
 		 * 'nTr' and 'nParent'
 		 *  @type array
 		 *  @default []
@@ -13349,9 +13349,9 @@
 	
 		/**
 		 * Array of callback functions for state saving. Each array element is an
-		 * object with the following parameters:
+		 * object with the following query:
 		 *   <ul>
-		 *     <li>function:fn - function to call. Takes two parameters, oSettings
+		 *     <li>function:fn - function to call. Takes two query, oSettings
 		 *       and the JSON string to save that has been thus far created. Returns
 		 *       a JSON string to be inserted into a json object
 		 *       (i.e. '"param": [ 0, 1, 2]')</li>
@@ -13364,9 +13364,9 @@
 	
 		/**
 		 * Array of callback functions for state loading. Each array element is an
-		 * object with the following parameters:
+		 * object with the following query:
 		 *   <ul>
-		 *     <li>function:fn - function to call. Takes two parameters, oSettings
+		 *     <li>function:fn - function to call. Takes two query, oSettings
 		 *       and the object stored. May return false to cancel state loading</li>
 		 *     <li>string:sName - name of callback</li>
 		 *   </ul>
@@ -13448,7 +13448,7 @@
 	
 		/**
 		 * Functions which are called prior to sending an Ajax request so extra
-		 * parameters can easily be sent to the server
+		 * query can easily be sent to the server
 		 *  @type array
 		 *  @default []
 		 */
@@ -13788,7 +13788,7 @@
 		 * * `cFeature` - a character so the feature can be enabled by the `dom`
 		 *   instillation option. This is case sensitive.
 		 *
-		 * The `fnInit` function has the following input parameters:
+		 * The `fnInit` function has the following input query:
 		 *
 		 * 1. `{object}` DataTables settings object: see
 		 *    {@link DataTable.models.oSettings}
@@ -13820,11 +13820,11 @@
 		 * This method of searching is complimentary to the default type based
 		 * searching, and a lot more comprehensive as it allows you complete control
 		 * over the searching logic. Each element in this array is a function
-		 * (parameters described below) that is called for every row in the table,
+		 * (query described below) that is called for every row in the table,
 		 * and your logic decides if it should be included in the searching data set
 		 * or not.
 		 *
-		 * Searching functions have the following input parameters:
+		 * Searching functions have the following input query:
 		 *
 		 * 1. `{object}` DataTables settings object: see
 		 *    {@link DataTable.models.oSettings}
@@ -13951,7 +13951,7 @@
 		 * options defined here) can be used through the `paginationType`
 		 * initialisation parameter.
 		 *
-		 * The functions defined take two parameters:
+		 * The functions defined take two query:
 		 *
 		 * 1. `{int} page` The current page index
 		 * 2. `{int} pages` The number of pages in the table
@@ -14010,7 +14010,7 @@
 		 * function is run here depends on the `dt-init columns.orderDataType`
 		 * parameter that is used for the column (if any).
 		 *
-		 * The functions defined take two parameters:
+		 * The functions defined take two query:
 		 *
 		 * 1. `{object}` DataTables settings object: see
 		 *    {@link DataTable.models.oSettings}
@@ -14052,7 +14052,7 @@
 			 * a column's type, making initialisation of DataTables super easy, even
 			 * when complex data is in the table.
 			 *
-			 * The functions defined take two parameters:
+			 * The functions defined take two query:
 			 *
 		     *  1. `{*}` Data from the column cell to be analysed
 		     *  2. `{settings}` DataTables settings object. This can be used to
@@ -14156,7 +14156,7 @@
 			 * * `{*}` Data to be sorted upon
 			 *
 			 * `{type}-asc` and `{type}-desc`: Functions are typical Javascript sort
-			 * functions, taking two parameters:
+			 * functions, taking two query:
 			 *
 		     *  1. `{*}` Data to compare to the second parameter
 		     *  2. `{*}` Data to compare to the first parameter
@@ -14164,7 +14164,7 @@
 			 * And returning:
 			 *
 			 * * `{*}` Ordering match: <0 if first parameter should be sorted lower
-			 *   than the second parameter, ===0 if the two parameters are equal and
+			 *   than the second parameter, ===0 if the two query are equal and
 			 *   >0 if the first parameter should be sorted height than the second
 			 *   parameter.
 			 * 
@@ -14834,14 +14834,14 @@
 	 *
 	 * * `number` - Will format numeric data (defined by `columns.data`) for
 	 *   display, retaining the original unformatted data for sorting and filtering.
-	 *   It takes 5 parameters:
+	 *   It takes 5 query:
 	 *   * `string` - Thousands grouping separator
 	 *   * `string` - Decimal point indicator
 	 *   * `integer` - Number of decimal points to show
 	 *   * `string` (optional) - Prefix.
 	 *   * `string` (optional) - Postfix (/suffix).
 	 * * `text` - Escape HTML to help prevent XSS attacks. It has no optional
-	 *   parameters.
+	 *   query.
 	 *
 	 * @example
 	 *   // Column definition using the number renderer

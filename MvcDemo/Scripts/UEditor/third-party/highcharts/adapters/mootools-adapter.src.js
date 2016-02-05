@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license Highcharts JS v3.0.6 (2013-10-04)
  * MooTools adapter
  *
@@ -33,7 +33,7 @@ win.HighchartsAdapter = {
 			morphCompute = morphProto.compute;
 
 		// override Fx.start to allow animation of SVG element wrappers
-		/*jslint unparam: true*//* allow unused parameters in fx functions */
+		/*jslint unparam: true*//* allow unused query in fx functions */
 		fxProto.start = function (from, to) {
 			var fx = this,
 				elem = fx.element;

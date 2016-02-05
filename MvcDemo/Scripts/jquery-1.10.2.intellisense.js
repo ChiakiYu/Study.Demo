@@ -2499,7 +2499,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Execute all handlers and behaviors attached to the matched elements for the given event type.</summary>
     ///   <param name="eventType" type="String">A string containing a JavaScript event type, such as click or submit.</param>
-    ///   <param name="extraParameters" type="PlainObject">Additional parameters to pass along to the event handler.</param>
+    ///   <param name="extraParameters" type="PlainObject">Additional query to pass along to the event handler.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2512,7 +2512,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Execute all handlers attached to an element for an event.</summary>
     ///   <param name="eventType" type="String">A string containing a JavaScript event type, such as click or submit.</param>
-    ///   <param name="extraParameters" type="Array">An array of additional parameters to pass along to the event handler.</param>
+    ///   <param name="extraParameters" type="Array">An array of additional query to pass along to the event handler.</param>
     ///   <returns type="Object" />
     /// </signature>
   },

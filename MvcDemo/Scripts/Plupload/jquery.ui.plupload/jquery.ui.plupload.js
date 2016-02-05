@@ -84,7 +84,7 @@ _jQuery UI_ widget factory, there are some specifics. See examples below for mor
 	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
 	@param {Number|String} [settings.max_file_size] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
 	@param {Number} [settings.max_retries=0] How many times to retry the chunk or file, before triggering Error event.
-	@param {Boolean} [settings.multipart=true] Whether to send file and additional parameters as Multipart formated message.
+	@param {Boolean} [settings.multipart=true] Whether to send file and additional query as Multipart formated message.
 	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every file upload.
 	@param {Boolean} [settings.multi_selection=true] Enable ability to select multiple files at once in file dialog.
 	@param {Boolean} [settings.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.

@@ -1,4 +1,4 @@
-;var MXI_DEBUG = true;
+﻿;var MXI_DEBUG = true;
 /**
  * mOxie - multi-runtime File API & XMLHttpRequest L2 Polyfill
  * v1.3.3
@@ -7338,7 +7338,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 
 			_xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
 
-			// append multipart parameters
+			// append multipart query
 			fd.each(function(value, name) {
 				// Firefox 3.6 failed to convert multibyte characters to UTF-8 in sendAsBinary(), 
 				// so we try it here ourselves with: unescape(encodeURIComponent(value))

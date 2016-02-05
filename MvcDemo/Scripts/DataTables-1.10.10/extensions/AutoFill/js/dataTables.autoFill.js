@@ -1,4 +1,4 @@
-/*! AutoFill 2.1.0
+﻿/*! AutoFill 2.1.0
  * ©2008-2015 SpryMedia Ltd - datatables.net/license
  */
 
@@ -647,7 +647,7 @@ $.extend( AutoFill.prototype, {
 
 	/**
 	 * Create an array with a range of numbers defined by the start and end
-	 * parameters passed in (inclusive!).
+	 * query passed in (inclusive!).
 	 * 
 	 * @param  {integer} start Start
 	 * @param  {integer} end   End

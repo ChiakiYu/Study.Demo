@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license A class to parse color values
  * @author Stoyan Stefanov <sstoo@gmail.com>
  * @link   http://www.phpied.com/rgb-color-parser-in-javascript/
@@ -315,7 +315,7 @@ if(!Array.prototype.indexOf){
 
 (function(){
 	// canvg(target, s)
-	// empty parameters: replace all 'svg' elements on page with 'canvas' elements
+	// empty query: replace all 'svg' elements on page with 'canvas' elements
 	// target: canvas element or the id of a canvas element
 	// s: svg string, url to svg file, or xml document
 	// opts: optional hash of options
@@ -330,7 +330,7 @@ if(!Array.prototype.indexOf){
 	//		 renderCallback: function => will call the function after the first render is completed
 	//		 forceRedraw: function => will call the function on every frame, if it returns true, will redraw
 	this.canvg = function (target, s, opts) {
-		// no parameters
+		// no query
 		if (target == null && s == null && opts == null) {
 			var svgTags = document.getElementsByTagName('svg');
 			for (var i=0; i<svgTags.length; i++) {

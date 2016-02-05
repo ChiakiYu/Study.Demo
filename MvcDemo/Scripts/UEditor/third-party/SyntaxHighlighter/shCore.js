@@ -1,4 +1,4 @@
-// XRegExp 1.5.1
+﻿// XRegExp 1.5.1
 // (c) 2007-2012 Steven Levithan
 // MIT License
 // <http://xregexp.com>
@@ -898,8 +898,8 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
         /**
          * Finds all elements on the page which should be processes by SyntaxHighlighter.
          *
-         * @param {Object} globalParams		Optional parameters which override element's
-         * 									parameters. Only used if element is specified.
+         * @param {Object} globalParams		Optional query which override element's
+         * 									query. Only used if element is specified.
          *
          * @param {Object} element	Optional element to highlight. If none is
          * 							provided, all elements in the current document
@@ -942,8 +942,8 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
          * Shorthand to highlight all elements on the page that are marked as
          * SyntaxHighlighter source code.
          *
-         * @param {Object} globalParams		Optional parameters which override element's
-         * 									parameters. Only used if element is specified.
+         * @param {Object} globalParams		Optional query which override element's
+         * 									query. Only used if element is specified.
          *
          * @param {Object} element	Optional element to highlight. If none is
          * 							provided, all elements in the current document
@@ -2318,7 +2318,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
          * Constructor isn't used for initialization so that nothing executes during necessary
          * `new SyntaxHighlighter.Highlighter()` call when setting up brush inheritence.
          *
-         * @param {Hash} params Highlighter parameters.
+         * @param {Hash} params Highlighter query.
          */
         init: function(params)
         {
@@ -3298,7 +3298,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 			{ regex: new RegExp(this.getKeywords(keywords), 'gmi'),											css: 'keyword' },						// keywords
 			{ regex: new RegExp('-'+this.getKeywords(operators), 'gmi'),									css: 'operator value' },				// operators
 			{ regex: new RegExp('\\[[A-Z_\\[][A-Z0-9_. `,\\[\\]]*\\]', 'gi'),								css: 'constants' },						// .Net [Type]s
-			{ regex: new RegExp('\\s+-(?!'+this.getKeywords(operators)+')[a-zA-Z_][a-zA-Z0-9_]*', 'gmi'),	css: 'color1' },						// parameters	  
+			{ regex: new RegExp('\\s+-(?!'+this.getKeywords(operators)+')[a-zA-Z_][a-zA-Z0-9_]*', 'gmi'),	css: 'color1' },						// query	  
 		];
 	};
 
