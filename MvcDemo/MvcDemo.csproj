@@ -131,6 +131,9 @@
     <Compile Include="Models\AreaQuery.cs" />
     <Compile Include="Models\DataTables\DataTablesParameters.cs" />
     <Compile Include="Models\DataTables\DataTablesResult.cs" />
+    <Compile Include="Models\Geetest\GeetestConfig.cs" />
+    <Compile Include="Models\Geetest\GeetestLib.cs" />
+    <Compile Include="Models\Geetest\LoginInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1046,6 +1049,7 @@
     <Content Include="Views\Home\ArtDialoig.cshtml" />
     <Content Include="Views\Home\BaiduMap.cshtml" />
     <Content Include="Views\Home\DataTables.cshtml" />
+    <Content Include="Views\Home\Geetest.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

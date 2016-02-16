@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using MvcDemo.Models;
 using MvcDemo.Models.DataTables;
+using MvcDemo.Models.Geetest;
 using Newtonsoft.Json;
 
 namespace MvcDemo.Controllers
@@ -98,6 +99,56 @@ namespace MvcDemo.Controllers
         public ActionResult ArtDialoig()
         {
             return PartialView();
+        }
+
+        public ActionResult Geetest()
+        {
+            var loginInfo = new LoginInfo();
+            return View(loginInfo);
+        }
+
+        [HttpPost]
+        public ActionResult Geetest(LoginInfo loginInfo)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewData["message"] = "请填写完整数据";
+                return View(loginInfo);
+            }
+            if (!IsVerifyCaptcha())
+            {
+                ViewData["message"] = "验证码错误";
+                return View(loginInfo);
+            }
+            if (loginInfo.UserName == "admin" && loginInfo.Password == "123123")
+            {
+                ViewData["message"] ="登录成功";
+                return View(loginInfo);
+            }
+            ViewData["message"] = "用户名密码错误";
+            return View(loginInfo);
+        }
+
+
+        public bool IsVerifyCaptcha()
+        {
+            var geetest = new GeetestLib(GeetestConfig.publicKey, GeetestConfig.privateKey);
+            var gtServerStatusCode = (byte)Session[GeetestLib.GtServerStatusSessionKey];
+            var challenge = Request.Form.Get(GeetestLib.FnGeetestChallenge);
+            var validate = Request.Form.Get(GeetestLib.FnGeetestValidate);
+            var seccode = Request.Form.Get(GeetestLib.FnGeetestSeccode);
+            var result = gtServerStatusCode == 1
+                ? geetest.EnhencedValidateRequest(challenge, validate, seccode)
+                : geetest.FailbackValidateRequest(challenge, validate, seccode);
+            return result == 1;
+        }
+
+        public ContentResult GetCaptcha()
+        {
+            GeetestLib geetest = new GeetestLib(GeetestConfig.publicKey, GeetestConfig.privateKey);
+            Byte gtServerStatus = geetest.PreProcess();
+            Session[GeetestLib.GtServerStatusSessionKey] = gtServerStatus;
+            return Content(geetest.GetResponseStr());
         }
 
         public ActionResult DataTables()
