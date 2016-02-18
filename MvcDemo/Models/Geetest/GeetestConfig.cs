@@ -4,7 +4,14 @@ namespace MvcDemo.Models.Geetest
 {
     public class GeetestConfig
     {
-        public const String publicKey = "b46d1900d0a894591916ea94ea91bd2c";
-        public const String privateKey = "36fc3fe98530eea08dfc6ce76e3d24c4";
+        /// <summary>
+        /// 验证ID
+        /// </summary>
+        public const string PublicKey = "6ef7c61ac11117de6996efa65be1c27e";
+
+        /// <summary>
+        /// 验证Key
+        /// </summary>
+        public const string PrivateKey = "62add4e324dd9e9ef2ea35192f8d9181";
     }
 }

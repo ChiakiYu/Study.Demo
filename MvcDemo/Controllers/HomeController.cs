@@ -122,17 +122,20 @@ namespace MvcDemo.Controllers
             }
             if (loginInfo.UserName == "admin" && loginInfo.Password == "123123")
             {
-                ViewData["message"] ="登录成功";
+                ViewData["message"] = "登录成功";
                 return View(loginInfo);
             }
             ViewData["message"] = "用户名密码错误";
             return View(loginInfo);
         }
 
-
+        /// <summary>
+        /// 验证码是否正确
+        /// </summary>
+        /// <returns></returns>
         public bool IsVerifyCaptcha()
         {
-            var geetest = new GeetestLib(GeetestConfig.publicKey, GeetestConfig.privateKey);
+            var geetest = new GeetestLib(GeetestConfig.PublicKey, GeetestConfig.PrivateKey);
             var gtServerStatusCode = (byte)Session[GeetestLib.GtServerStatusSessionKey];
             var challenge = Request.Form.Get(GeetestLib.FnGeetestChallenge);
             var validate = Request.Form.Get(GeetestLib.FnGeetestValidate);
@@ -143,10 +146,14 @@ namespace MvcDemo.Controllers
             return result == 1;
         }
 
+        /// <summary>
+        /// 获取验证码
+        /// </summary>
+        /// <returns></returns>
         public ContentResult GetCaptcha()
         {
-            GeetestLib geetest = new GeetestLib(GeetestConfig.publicKey, GeetestConfig.privateKey);
-            Byte gtServerStatus = geetest.PreProcess();
+            var geetest = new GeetestLib(GeetestConfig.PublicKey, GeetestConfig.PrivateKey);
+            var gtServerStatus = geetest.PreProcess();
             Session[GeetestLib.GtServerStatusSessionKey] = gtServerStatus;
             return Content(geetest.GetResponseStr());
         }

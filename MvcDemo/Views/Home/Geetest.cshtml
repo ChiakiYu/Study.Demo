@@ -16,10 +16,10 @@
     }
     <label>用户名</label>
     @Html.TextBoxFor(n => n.UserName, new { placeholder = "用户名", @class = "form-control", autofocus = "" })
-    @Html.ValidationMessageFor(n=>n.UserName)
+    @Html.ValidationMessageFor(n => n.UserName)
     <br />
     <label>密码</label>
-    @Html.TextBoxFor(n => n.Password, new { placeholder = "密码", @class = "form-control"})
+    @Html.PasswordFor(n => n.Password, new { placeholder = "密码", @class = "form-control" })
     @Html.ValidationMessageFor(n => n.Password)
     <br />
     <label for="captcha">验证码</label>
@@ -30,10 +30,6 @@
 
 
 <script>
-    var handler = function (captchaObj) {
-        // 将验证码加到id为captcha的元素里
-        captchaObj.appendTo("#captcha");
-    };
     $.ajax({
         // 获取id，challenge，success（是否启用failback）
         url: '@Url.Action("GetCaptcha", "Home")',
@@ -48,7 +44,10 @@
                 challenge: data.challenge,
                 //product: "embed", // 产品形式
                 offline: !data.success
-            }, handler);
+            }, function (captchaObj) {
+                // 将验证码加到id为captcha的元素里
+                captchaObj.appendTo("#captcha");
+            });
         }
     });
 </script>
