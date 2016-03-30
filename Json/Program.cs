@@ -15,6 +15,35 @@ namespace Json
         static void Main(string[] args)
         {
 
+            JsonDeserialize();
+            
+            //{"Message":"新用户注册：用户名为 hgjghjgf ，邮箱为 fgtryrt@qq.com","Type":"Abp.Notifications.MessageNotificationData","Properties":{}}
+
+            //JsonDemo();
+            Console.ReadKey();
+        }
+
+        private static void JsonDeserialize()
+        {
+
+            var notificationData = new MessageNotificationData(string.Format("新用户注册：用户名为 {0} ，邮箱为 {1}", "chiaki", "yu_199012@qq.com"));
+
+            var str = notificationData.ToString();
+
+          var sdaf =   Type.GetType(
+                "Json.MessageNotificationData, Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
+
+            var data = JsonConvert.DeserializeObject(str);
+
+            Console.WriteLine(data.GetHashCode());
+        }
+
+
+
+
+        #region JsonDemo
+        private static void JsonDemo()
+        {
             List<string> area = new List<string>()
             {
                 "坊子区",
@@ -85,7 +114,7 @@ namespace Json
             var data = new { categories = area, series = new { hehe, hehe1 } };
             var result = JsonConvert.SerializeObject(data);
             Console.WriteLine(result);
-            Console.ReadKey();
-        }
+        } 
+        #endregion
     }
 }
