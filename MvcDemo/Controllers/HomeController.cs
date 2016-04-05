@@ -1,8 +1,18 @@
-﻿using System;
+﻿// --------------------------------------------------------
+// <copyright file="HomeController.cs" company="ChiakiYu">
+//     Copyright (c) 2015-2016 ChiakiYu.All rights reserved
+// </copyright >
+// <site>http://www.8023me.com</site>
+// <last-editor>于琦</last-editor>
+// <last-date>2016-04-05 16:32</last-date>
+// --------------------------------------------------------
+
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using MvcDemo.Models;
@@ -14,10 +24,25 @@ namespace MvcDemo.Controllers
 {
     public class HomeController : Controller
     {
+        #region Index
+
         public ActionResult Index()
         {
             return View();
         }
+
+        #endregion
+
+        #region ArtDialoig
+
+        public ActionResult ArtDialoig()
+        {
+            return PartialView();
+        }
+
+        #endregion
+
+        #region BaiduMap
 
         public ActionResult BaiduMap()
         {
@@ -33,6 +58,10 @@ namespace MvcDemo.Controllers
             return Content(result);
         }
 
+        #endregion
+
+        #region About&Contact
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -46,6 +75,10 @@ namespace MvcDemo.Controllers
 
             return View();
         }
+
+        #endregion
+
+        #region UEditor
 
         public ActionResult UEditor()
         {
@@ -61,6 +94,10 @@ namespace MvcDemo.Controllers
             ViewData["content"] = content;
             return View();
         }
+
+        #endregion
+
+        #region Plupload
 
         public ActionResult Plupload()
         {
@@ -96,10 +133,9 @@ namespace MvcDemo.Controllers
             return Json(new { src, src1 = "111" });
         }
 
-        public ActionResult ArtDialoig()
-        {
-            return PartialView();
-        }
+        #endregion
+
+        #region Geetest
 
         public ActionResult Geetest()
         {
@@ -130,7 +166,7 @@ namespace MvcDemo.Controllers
         }
 
         /// <summary>
-        /// 验证码是否正确
+        ///     验证码是否正确
         /// </summary>
         /// <returns></returns>
         public bool IsVerifyCaptcha()
@@ -147,7 +183,7 @@ namespace MvcDemo.Controllers
         }
 
         /// <summary>
-        /// 获取验证码
+        ///     获取验证码
         /// </summary>
         /// <returns></returns>
         public ContentResult GetCaptcha()
@@ -157,6 +193,10 @@ namespace MvcDemo.Controllers
             Session[GeetestLib.GtServerStatusSessionKey] = gtServerStatus;
             return Content(geetest.GetResponseStr());
         }
+
+        #endregion
+
+        #region DataTables
 
         public ActionResult DataTables()
         {
@@ -183,14 +223,15 @@ namespace MvcDemo.Controllers
         }
 
         /// <summary>
-        /// 构造函数
+        ///     构造函数
         /// </summary>
         /// <param name="draw">请求次数计数器</param>
         /// <param name="recordsTotal">总共记录数</param>
         /// <param name="recordsFiltered">过滤后的记录数</param>
         /// <param name="data">数据</param>
         /// <param name="error">服务器错误信息</param>
-        public JsonResult DataTablesJson<TEntity>(int draw, int recordsTotal, int recordsFiltered, IReadOnlyList<TEntity> data, string error = null)
+        public JsonResult DataTablesJson<TEntity>(int draw, int recordsTotal, int recordsFiltered,
+            IReadOnlyList<TEntity> data, string error = null)
         {
             var result = new DataTablesResult<TEntity>(draw, recordsFiltered, recordsFiltered, data);
             var jsonResult = new JsonResult
@@ -200,66 +241,78 @@ namespace MvcDemo.Controllers
             return jsonResult;
         }
 
-        //public JsonResult DataTablesJson(object data)
-        //{
-        //    var jsonResult = new JsonResult
-        //    {
-        //        Data = data
-        //    };
-        //    return jsonResult;
-        //}
+        #endregion
 
-        //public JsonResult DataTablesJson(object data, JsonRequestBehavior behavior)
-        //{
-        //    var jsonResult = new JsonResult
-        //    {
-        //        Data = data,
-        //        JsonRequestBehavior = behavior
-        //    };
-        //    return jsonResult;
-        //}
+        #region BootstrapTable
 
-        //public JsonResult DataTablesJson(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
-        //{
-        //    var jsonResult = new JsonResult
-        //    {
-        //        Data = data,
-        //        ContentType = contentType,
-        //        ContentEncoding = contentEncoding,
-        //        JsonRequestBehavior = behavior
-        //    };
-        //    return jsonResult;
-        //}
+        public ActionResult BootstrapTable()
+        {
+            return View();
+        }
+
+        public JsonResult GetDataForBootstrapTable(AreaQueryForBootstrapTable query)
+        {
+            var data = new Area().GetData();
+            if (!string.IsNullOrEmpty(query.Name))
+                data = data.Where(n => n.Name.Contains(query.Name));
+            if (!string.IsNullOrEmpty(query.Description))
+                data = data.Where(n => n.Description.Contains(query.Description));
+            if (query.X > 0)
+                data = data.Where(n => Equals(n.PointX, query.X));
+            if (query.Y > 0)
+                data = data.Where(n => Equals(n.PointY, query.Y));
+
+            data = !string.IsNullOrEmpty(query.Sort) ? data.OrderBy(string.Format("{0} {1}", query.Sort, query.Order)) : data.OrderBy("Id " + query.Order);
+
+            var count = data.Count();
+            var result = data.Skip(query.Offset).Take(query.Limit).ToList();
+            var result1 = new { count, result };
+            return Json(result1, JsonRequestBehavior.AllowGet);
+        }
+
+
+        #endregion
     }
 
-    public static class QueryableExtensions
-    {
-        public static IQueryable<T> OrderBy<T>(this IQueryable<T> queryable, string propertyName)
-        {
-            return QueryableHelper<T>.OrderBy(queryable, propertyName, false);
-        }
-        public static IQueryable<T> OrderBy<T>(this IQueryable<T> queryable, string propertyName, bool desc)
-        {
-            return QueryableHelper<T>.OrderBy(queryable, propertyName, desc);
-        }
-        static class QueryableHelper<T>
-        {
-            private static ConcurrentDictionary<string, LambdaExpression> cache = new ConcurrentDictionary<string, LambdaExpression>();
-            public static IQueryable<T> OrderBy(IQueryable<T> queryable, string propertyName, bool desc)
-            {
-                dynamic keySelector = GetLambdaExpression(propertyName);
-                return desc ? Queryable.OrderByDescending(queryable, keySelector) : Queryable.OrderBy(queryable, keySelector);
-            }
-            private static LambdaExpression GetLambdaExpression(string propertyName)
-            {
-                if (cache.ContainsKey(propertyName))
-                    return cache[propertyName];
-                var param = Expression.Parameter(typeof(T));
-                var body = Expression.Property(param, propertyName);
-                var keySelector = Expression.Lambda(body, param);
-                cache[propertyName] = keySelector;
-                return keySelector;
-            }
-        }
-    }
+    #region QueryableExtensions
+
+    //public static class QueryableExtensions
+    //{
+    //    public static IQueryable<T> OrderBy<T>(this IQueryable<T> queryable, string propertyName)
+    //    {
+    //        return QueryableHelper<T>.OrderBy(queryable, propertyName, false);
+    //    }
+
+    //    public static IQueryable<T> OrderBy<T>(this IQueryable<T> queryable, string propertyName, bool desc)
+    //    {
+    //        return QueryableHelper<T>.OrderBy(queryable, propertyName, desc);
+    //    }
+
+    //    private static class QueryableHelper<T>
+    //    {
+    //        private static readonly ConcurrentDictionary<string, LambdaExpression> cache =
+    //            new ConcurrentDictionary<string, LambdaExpression>();
+
+    //        public static IQueryable<T> OrderBy(IQueryable<T> queryable, string propertyName, bool desc)
+    //        {
+    //            dynamic keySelector = GetLambdaExpression(propertyName);
+    //            return desc
+    //                ? Queryable.OrderByDescending(queryable, keySelector)
+    //                : Queryable.OrderBy(queryable, keySelector);
+    //        }
+
+    //        private static LambdaExpression GetLambdaExpression(string propertyName)
+    //        {
+    //            if (cache.ContainsKey(propertyName))
+    //                return cache[propertyName];
+    //            var param = Expression.Parameter(typeof(T));
+    //            var body = Expression.Property(param, propertyName);
+    //            var keySelector = Expression.Lambda(body, param);
+    //            cache[propertyName] = keySelector;
+    //            return keySelector;
+    //        }
+    //    }
+    //}
+
+    #endregion
 }
