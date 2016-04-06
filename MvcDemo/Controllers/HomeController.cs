@@ -266,10 +266,15 @@ namespace MvcDemo.Controllers
 
             var count = data.Count();
             var result = data.Skip(query.Offset).Take(query.Limit).ToList();
-            var result1 = new { count, result };
+            var result1 = new { total = count, rows = result };
             return Json(result1, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult Delete(IEnumerable<int> ids)
+        {
+            return Json("删除成功");
+        }
 
         #endregion
     }

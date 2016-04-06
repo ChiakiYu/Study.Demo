@@ -19,20 +19,23 @@
             <button id="hehe">查询</button>
             <br />
             <br />
-
-            <table id="table"></table>
-
-            <table data-toggle="table"
-                   data-ajax="getData"
+            <button id="delete">删除</button>
+            <br />
+            <br />
+            <table id="table" data-toggle="table"
+                   data-query-params="postQueryParams"
+                   data-url="@Url.Action("GetDataForBootstrapTable","Home")"
+                   data-method="post"
                    data-side-pagination="server"
                    data-pagination="true">
                 <thead>
                     <tr>
                         <th data-field="state" data-checkbox="true"></th>
                         <th data-field="Id" data-sortable="true">Id</th>
-                        <th data-field="Description">Description</th>
+                        <th data-field="Description" data-formatter="DescriptionFormatter">Description</th>
                         <th data-field="PointX" data-sortable="true" data-order="desc">PointX</th>
-                        <th data-field="PointY">PointY</th>
+                        <th data-field="PointY" data-sortable="true">PointY</th>
+                        <th data-formatter="opFormatter">操作</th>
                     </tr>
                 </thead>
             </table>
@@ -41,49 +44,54 @@
     </div>
 </section>
 <script>
-    function getData(params) {
-        // data you need
-        console.log(params.data);
+    var $table = $('#table');
 
-        var url = '@Url.Action("GetDataForBootstrapTable","Home")';
-        // just use setTimeout
-
-        $.get(url,params.data, function (data) {
-
-            params.success({
-                total: data.count,
-                rows: data.result
-            });
-            // hide loading
-            //params.complete();
-        });
-
-       
+    function verifyChoose() {
+        var items = $table.bootstrapTable('getSelections');
+        var length = items.length;
+        if (length <= 0) {
+            alert("请至少选择一项。");
+            return false;
+        }
+        return true;
     }
+
+
+    function postQueryParams(params) {
+        params.Name = $("#name").val();
+        params.Description = $("#desc").val();
+        params.X = $("#x").val();
+        params.Y = $("#y").val();
+        return params; // body data
+    }
+
+    function opFormatter(value, row) {
+        var result = "";
+        result += '<button class="btn btn-sm btn-primary" title="编辑" data-href="#">编辑' + row.Id + '</button>';
+        return result;
+    }
+
     $(function () {
 
+        $("#hehe").click(function () {
+            $table.bootstrapTable('refresh');
+        });
 
-        //$('#table').bootstrapTable({
-        //    columns: [{
-        //        field: 'id',
-        //        title: 'Item ID'
-        //    }, {
-        //        field: 'name',
-        //        title: 'Item Name'
-        //    }, {
-        //        field: 'price',
-        //        title: 'Item Price'
-        //    }],
-        //    data: [{
-        //        id: 1,
-        //        name: 'Item 1',
-        //        price: '$1'
-        //    }, {
-        //        id: 2,
-        //        name: 'Item 2',
-        //        price: '$2'
-        //    }]
-        //});
+        $("#delete").click(function () {
+            var result = [];
+            if (verifyChoose()) {
+                var items = $table.bootstrapTable('getSelections');
+                $.each(items, function (index, element) {
+                    result.push({ name: "ids", value: element.Id });
+                });
+
+                var url = '@Url.Action("Delete")';
+                $.post(url, result, function (data) {
+                    console.log(data);
+                    $table.bootstrapTable('refresh');
+                });
+            }
+        });
     });
 
 </script>
