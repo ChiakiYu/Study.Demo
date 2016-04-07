@@ -145,6 +145,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -163,6 +164,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\BootstrapTable\bootstrap-table.css" />
     <Content Include="Scripts\BootstrapTable\bootstrap-table.js" />
+    <Content Include="Scripts\BootstrapTable\bootstraptable.js" />
     <Content Include="Scripts\BootstrapTable\extensions\accent-neutralise\bootstrap-table-accent-neutralise.js" />
     <Content Include="Scripts\BootstrapTable\extensions\angular\bootstrap-table-angular.js" />
     <Content Include="Scripts\BootstrapTable\extensions\cookie\bootstrap-table-cookie.js" />
@@ -294,6 +296,17 @@
     <Content Include="Scripts\BootstrapTable\extensions\toolbar\README.md" />
     <Content Include="Scripts\BootstrapTable\locale\bootstrap-table-en-US.js.template" />
     <Content Include="Scripts\BootstrapTable\locale\README.md" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot_v=4.4.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg_v=4.4.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf_v=4.4.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2_v=4.4.0" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff_v=4.4.0" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables-1.10.10\examples\advanced_init\column_render.html" />
     <Content Include="Scripts\DataTables-1.10.10\examples\advanced_init\complex_header.html" />

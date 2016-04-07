@@ -1,11 +1,13 @@
 ﻿@{
     ViewBag.Title = "BootstrapTable";
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Scripts/BootstrapTable/bootstrap-table.css" rel="stylesheet" />
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/BootstrapTable/bootstrap-table.js"></script>
-    <script src="~/Scripts/BootstrapTable/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Scripts/BootstrapTable/bootstraptable.js"></script>
 }
 
 <section>
@@ -24,17 +26,17 @@
             <br />
             <table id="table" data-toggle="table"
                    data-query-params="postQueryParams"
-                   data-url="@Url.Action("GetDataForBootstrapTable","Home")"
-                   data-method="post"
-                   data-side-pagination="server"
-                   data-pagination="true">
+                   data-url="@Url.Action("GetDataForBootstrapTable", "Home")"
+                   data-sort-name="Id"
+                   data-sort-order="desc"
+                   data-method="post">
                 <thead>
                     <tr>
                         <th data-field="state" data-checkbox="true"></th>
                         <th data-field="Id" data-sortable="true">Id</th>
-                        <th data-field="Description" data-formatter="DescriptionFormatter">Description</th>
-                        <th data-field="PointX" data-sortable="true" data-order="desc">PointX</th>
-                        <th data-field="PointY" data-sortable="true">PointY</th>
+                        <th data-field="Description" data-formatter="DescriptionFormatter">描述</th>
+                        <th data-field="PointX" data-sortable="true">X坐标</th>
+                        <th data-field="PointY" data-sortable="true">Y坐标</th>
                         <th data-formatter="opFormatter">操作</th>
                     </tr>
                 </thead>
