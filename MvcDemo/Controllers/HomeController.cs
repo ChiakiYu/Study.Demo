@@ -218,7 +218,7 @@ namespace MvcDemo.Controllers
             data = data.OrderBy(query.OrderBy, query.OrderDir == DataTablesOrderDir.Desc);
             var count = data.Count();
             var result = data.Skip(query.Start).Take(query.Length).ToList();
-
+            
             return DataTablesJson(query.Draw, count, count, result);
         }
 
