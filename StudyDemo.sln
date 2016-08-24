@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Utilities", "DotNet.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcDemo", "MvcDemo\MvcDemo.csproj", "{6317B276-1319-4320-9697-64A9FA849D0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json", "Json\Json.csproj", "{2759F121-4C20-4B86-BC6D-DAE8F930AD89}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntiyFramework", "EntiyFramework", "{8E6148CC-9D65-414B-B17F-3148AD241A4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFConsole", "EFConsole\EFConsole.csproj", "{F3A05879-8F41-47BA-BF3B-1E20CE3BAE68}"
@@ -36,8 +34,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quertz.net", "Quertz.net", "{FB14045D-8BB7-4F12-96D2-62B2D06F6324}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quertz.net.demo", "Quertz.net.demo\Quertz.net.demo.csproj", "{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChiakiYu", "ChiakiYu\ChiakiYu.csproj", "{331F88C4-6105-4EC5-8409-4910AC144DC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailDemo", "EmailDemo\EmailDemo.csproj", "{5B1B2307-B65B-49DB-A197-50CA2D1BE1F7}"
 EndProject
@@ -101,16 +97,6 @@ Global
 		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6317B276-1319-4320-9697-64A9FA849D0F}.Release|x86.ActiveCfg = Release|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{2759F121-4C20-4B86-BC6D-DAE8F930AD89}.Release|x86.ActiveCfg = Release|Any CPU
 		{F3A05879-8F41-47BA-BF3B-1E20CE3BAE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3A05879-8F41-47BA-BF3B-1E20CE3BAE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3A05879-8F41-47BA-BF3B-1E20CE3BAE68}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -161,16 +147,6 @@ Global
 		{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{64878F21-9F9E-4D71-A5D3-3B7A7C0DF562}.Release|x86.ActiveCfg = Release|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{331F88C4-6105-4EC5-8409-4910AC144DC2}.Release|x86.ActiveCfg = Release|Any CPU
 		{5B1B2307-B65B-49DB-A197-50CA2D1BE1F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B1B2307-B65B-49DB-A197-50CA2D1BE1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B1B2307-B65B-49DB-A197-50CA2D1BE1F7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

@@ -109,7 +109,7 @@ namespace MvcDemo.Controllers
         {
             var nowTime = DateTime.Now;
 
-            var savePath = string.Format("/Yuonhtt_FileUpload/img/{0}/{1}/{2}/", nowTime.Year,
+            var savePath = string.Format("/Uploads/img/{0}/{1}/{2}/", nowTime.Year,
                 nowTime.Month.ToString("D2"), nowTime.Day.ToString("D2")); //上传文件的路径 
 
             var localPath = Server.MapPath(savePath);
